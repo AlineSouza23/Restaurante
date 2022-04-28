@@ -1,12 +1,14 @@
 package br.senai.sp.cfp138.restaguide.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-
+import javax.persistence.OneToMany;
 
 import lombok.Data;
 
@@ -40,6 +42,9 @@ public class Restaurante {
 	private String site;
 	private String telefone;
 	private String redesSociais;
+	@OneToMany(mappedBy = "restaurante")
+	private List<Avaliacao> avaliacoes;
+	
 	
 	// pega a String das fotos e transforma em vetores
 	public String[] verFotos() {
